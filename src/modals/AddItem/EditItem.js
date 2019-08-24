@@ -1,0 +1,138 @@
+import React from 'react';
+import styled from 'styled-components';
+
+import Text from '../../components/Text';
+import Select from '../../components/Select';
+
+import { rarityOptions, typeOptions, boolOptions, statOptions } from '../../data/constants';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const Input = styled.input`
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  color: ${props => props.theme.text};
+  font-size: 1em;
+  font-weight: 200;
+  font-family: 'OpenSans';
+
+  &::placeholder {
+    color: #8e9297;
+  }
+`
+
+const TextArea = styled.textarea`
+  color: ${props => props.theme.text};
+  width: 100%;
+  min-height: 50px;
+  height: auto;
+  max-height: 150px;
+  font-size: 1em;
+  font-weight: 200;
+
+  margin: 0;
+
+  border-style: none;
+  outline: none;
+  resize: none;
+
+  background-color: transparent;
+  &::placeholder {
+    color: #8e9297;
+  }
+`
+
+const PropertyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  width: ${props => props.full ? '100%' : '50%'};
+`
+
+const Property = (props) => {
+  const { title, value, placeholder, type, options, multi = false, full = false, callback } = props;
+
+  return (
+    <PropertyContainer full={full}>
+      <Text color='gold'>{title}</Text>
+
+      {
+        (type && type === 'select') ?
+          <Select value={value} options={options} multi={multi} onChange={callback} /> :
+          <Input type={type ? type : 'text'} placeholder={placeholder} value={value} onChange={({ target: { value } }) => callback(value)} />
+      }
+    </PropertyContainer>
+  )
+}
+
+const EditItem = (props) => {
+  const { editItem,
+    itemData: {
+      name, magic, rarity, desc, category, quantity,
+      range, longRange, attackStat, attackBonus, damageStat,
+      damage1, damage2, additionalDamage, value, weight
+    }
+  } = props;
+
+  return (
+    <Container>
+      <Row>
+        <Property title='Name' placeholder='Greatsword' value={name} callback={(value) => editItem('name', value)} />
+        <Property title='Rarity' value={rarity} options={rarityOptions} type='select' callback={(value) => editItem('rarity', value)} />
+      </Row>
+      <Row>
+        <Property title='Category' value={category} options={typeOptions} type='select' callback={(value) => editItem('category', value)} />
+        <Property title='Magic Item' value={magic} options={boolOptions} type='select' callback={(value) => editItem('magic', value)} />
+      </Row>
+
+      {
+        ['M', 'R'].includes(category) ? (
+          <>
+            <Row>
+              <Property title='Range' type='number' value={range} placeholder='15' callback={(value) => editItem('range', value)} />
+              <Property title='Long Range' type='number' value={longRange} placeholder='30' callback={(value) => editItem('longRange', value)} />
+            </Row>
+            <Row>
+              <Property title='Attack Stat' value={attackStat} options={statOptions} callback={(value) => editItem('attackStat', value)} type='select' />
+              <Property title='Attack Bonus' value={attackBonus} placeholder='0' callback={(value) => editItem('attackBonus', value)} />
+            </Row>
+            <Row>
+              <Property title='Damage Stat' value={damageStat} options={statOptions} callback={(value) => editItem('damageStat', value)} type='select' />
+              <Property title='Additional Damage' value={additionalDamage} placeholder='2d6' callback={(value) => editItem('additionalDamage', value)} />
+            </Row>
+            <Row>
+              <Property title='Damage (one-handed)' value={damage1} placeholder='1d8' callback={(value) => editItem('damage1', value)} />
+              <Property title='Damage (two-handed)' value={damage2} placeholder='1d10' callback={(value) => editItem('damage2', value)} />
+            </Row>
+          </>
+        ) : ''
+      }
+
+      <Row>
+        <Property title='Value' value={value} placeholder='50 gp' callback={(value) => editItem('value', Number(value))} />
+        <Property title='Weight (in lb)' value={weight} type='number' callback={(value) => editItem('weight', Number(value))} />
+      </Row>
+
+      <Property title='quantity' value={quantity} type='number' callback={(value) => editItem('quantity', Number(value))} />
+
+      <Text color='gold'>Description</Text>
+      <TextArea placeholder='Item description goes here' value={desc} onChange={(event) => editItem('desc', event.target.value)} />
+    </Container>
+  )
+}
+
+export default EditItem;
