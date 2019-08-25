@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ee509a58.chunk.css",
+    "main.js": "/static/js/main.8519dfce.chunk.js",
+    "main.js.map": "/static/js/main.8519dfce.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.98404367.chunk.js": "/static/js/2.98404367.chunk.js",
+    "static/js/2.98404367.chunk.js.map": "/static/js/2.98404367.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.44653d68ba48277a5aae3214711c15fd.js": "/precache-manifest.44653d68ba48277a5aae3214711c15fd.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.ee509a58.chunk.css.map": "/static/css/main.ee509a58.chunk.css.map",
+    "static/media/fonts.css": "/static/media/OpenSans-Semibold.33f225b8.ttf",
+    "static/media/delete.f7213e1d.svg": "/static/media/delete.f7213e1d.svg",
+    "static/media/edit.c8faf3be.svg": "/static/media/edit.c8faf3be.svg"
+  }
+}
