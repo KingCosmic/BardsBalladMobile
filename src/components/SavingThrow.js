@@ -34,36 +34,24 @@ class SavingThrow extends Component {
   constructor(props) {
     super(props);
 
-    const { throws, skill } = props;
-
-    this.path = `savingThrows.${skill}`;
-
-    this.state = {
-      efficient: throws[skill]
-    }
-
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange() {
-    const { revertData, updateData } = this.props;
-    const { efficient } = this.state;
+    const { characterID, syncData, throws, skill } = this.props;
 
-    this.setState({
-      efficient: !efficient
-    }, () => {
-      if (efficient !== this.props.efficient) {
-        return revertData(this.path);
+    syncData(
+      characterID,
+      {
+        [`savingThrows.${skill}`]: !throws[skill]
       }
-
-      updateData(this.path, !efficient);
-    })
+    )
   }
 
   render() {
-    const { skill, stats, prof } = this.props;
-    const { efficient } = this.state;
+    const { throws, skill, stats, prof } = this.props;
 
+    const efficient = throws[skill]
     const mod = determinMod(stats[skill]);
 
     return (
