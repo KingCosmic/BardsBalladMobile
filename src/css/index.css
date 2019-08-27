@@ -11,21 +11,6 @@ html, body, #root {
   user-select: none;
 }
 
-/* width */
 * ::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-* ::-webkit-scrollbar-track {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background-color: rgba(32, 34, 37, .6);
-  border-radius: 4px;
-}
-
-/* Handle */
-* ::-webkit-scrollbar-thumb {
-  background: #202225;
-  border-radius: 4px;
+  display: none;
 }
