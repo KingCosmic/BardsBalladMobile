@@ -27,7 +27,7 @@ class HitDice extends Component {
   editStat() {
     const { path, syncData, characterID, value } = this.props;
 
-    const newValue = Number(prompt('Edit Hit Dice', value))
+    const newValue = prompt('Edit Hit Dice', value)
 
     if (newValue === value) return;
 

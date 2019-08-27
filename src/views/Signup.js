@@ -67,7 +67,7 @@ class Signup extends Component {
   }
 
   // redirect if we're already logged in
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (api.loggedIn())
       this.props.history.replace('/characters');
   }

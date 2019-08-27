@@ -25,7 +25,7 @@ const ViewContainer = styled.div`
 
 class Home extends Component {
   // redirect if we're already logged in
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (this.props.history.location.pathname === '/') this.props.history.replace('/characters')
   }
 

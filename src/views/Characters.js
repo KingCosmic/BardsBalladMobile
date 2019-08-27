@@ -34,7 +34,7 @@ const CreateCharacter = styled.p`
 `
 
 class Characters extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (!this.props.loaded) this.props.loadAll()
   }
 

@@ -55,7 +55,7 @@ class CharacterOverlay extends Component {
     this.toggleSideInfo = this.toggleSideInfo.bind(this)
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const id = this.props.match.params.characterID;
 
     if (this.props.characters.length === 0) return this.props.loadOne(id);

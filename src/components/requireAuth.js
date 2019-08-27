@@ -14,7 +14,7 @@ const withAuth = (AuthComponent) => {
 
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       if (!api.loggedIn()) {
         this.props.history.replace('/login')
       }

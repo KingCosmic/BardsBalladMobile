@@ -27,7 +27,7 @@ class PassivePerception extends Component {
   editStat() {
     const { path, syncData, characterID, value } = this.props;
 
-    const newValue = Number(prompt('Edit Passive Perception', value))
+    const newValue = prompt('Edit Passive Perception', value)
 
     if (newValue === value) return;
 

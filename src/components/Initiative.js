@@ -27,7 +27,7 @@ class Initiative extends Component {
   editStat() {
     const { name, path, syncData, characterID, value } = this.props;
 
-    const newValue = Number(prompt(`Edit ${name}`, value))
+    const newValue = prompt(`Edit ${name}`, value)
 
     if (newValue === value) return;
 
