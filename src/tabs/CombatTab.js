@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Text from '../components/Text';
+
+import Section from '../components/ListSection';
 
 const Container = styled.div`
   display: flex;
@@ -13,23 +15,31 @@ const Container = styled.div`
   width: 100%;
 `
 
-const Content = styled(Text)`
+const Title = styled(Text)`
   font-size: 2em;
 `
 
-const Link = styled.a`
-  color: rgba(255, 255, 255, .6);
-  text-decoration: underline;
-`
-
-const CombatTab = () => {
+const AddButton = () => {
   return (
-    <Container>
-      <Content>
-        This Tab is under construction please join the <Link href='https://discord.gg/a5qSfxv'>discord</Link> or open a issue on <Link href='https://github.com/KingCosmic/BardsBallad'>github</Link> to push it higher on the priority list.
-      </Content>
-    </Container>
+    <Title>&#43;</Title>
   )
+}
+
+class CombatTab extends Component {
+  render() {
+    return (
+      <Container>
+
+        <Section title='Conditions' HeaderExtra={() => <AddButton />} showOnEmpty />
+
+        <Section title='Attacks' showOnEmpty />
+
+        <Section title='Creatures' showOnEmpty />
+
+      
+      </Container>
+    )
+  }
 }
 
 export default CombatTab;

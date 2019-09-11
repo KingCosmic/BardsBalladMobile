@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Text from '../../components/Text';
 import Select from '../../components/Select';
+import TextArea from 'react-textarea-autosize';
 
 const Container = styled.div`
   display: flex;
@@ -28,27 +29,6 @@ const Input = styled.input`
   font-weight: 200;
   font-family: 'OpenSans';
 
-  &::placeholder {
-    color: #8e9297;
-  }
-`
-
-const TextArea = styled.textarea`
-  color: ${props => props.theme.text};
-  width: 100%;
-  min-height: 50px;
-  height: auto;
-  max-height: 150px;
-  font-size: 1em;
-  font-weight: 200;
-
-  margin: 0;
-
-  border-style: none;
-  outline: none;
-  resize: none;
-
-  background-color: transparent;
   &::placeholder {
     color: #8e9297;
   }

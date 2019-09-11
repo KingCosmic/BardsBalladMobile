@@ -12,13 +12,17 @@ import Header from '../components/Header';
 //import CharacterCreation from '../components/CharacterCreation';
 import Character from '../components/Character';
 
+const Tab = styled.div`
+  height: 100vh;
+  width: 100vw;
+  padding: 65px 0;
+  overflow-y: auto;
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 70px 0;
-  height: 100vh;
-  width: 100vw;
 `
 
 const CreateCharacter = styled.p`
@@ -34,7 +38,7 @@ const CreateCharacter = styled.p`
 `
 
 class Characters extends Component {
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     if (!this.props.loaded) this.props.loadAll()
   }
 
@@ -53,21 +57,22 @@ class Characters extends Component {
     }
 
     return (
-      <Container>
+      <Tab>
         <Header title='Characters' leftClick={toggleSideNav} />
-        {
-
-          (characters.length === 0) ? null :
+        <Container>
+          {
+            (characters.length === 0) ? null :
 
             characters.map(character => {
               const { name, job, lvl } = character
 
               return <Character key={character._id} name={name} job={job} lvl={lvl} character={character} id={character._id} />
             })
-        }
+          }
+        </Container>
 
         <CreateCharacter onClick={createCharacter}>&#43;</CreateCharacter>
-      </Container>
+      </Tab>
     )
   }
 }

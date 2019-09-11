@@ -10,6 +10,7 @@ const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
+  z-index: 1;
   background-color: ${props => props.theme.light};
   width: 100vw;
   height: 60px;

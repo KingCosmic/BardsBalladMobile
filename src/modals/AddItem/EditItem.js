@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Text from '../../components/Text';
 import Select from '../../components/Select';
+import TextArea from 'react-textarea-autosize';
 
 import { rarityOptions, typeOptions, boolOptions, statOptions } from '../../data/constants';
 
@@ -35,25 +36,9 @@ const Input = styled.input`
   }
 `
 
-const TextArea = styled.textarea`
-  color: ${props => props.theme.text};
-  width: 100%;
-  min-height: 50px;
-  height: auto;
-  max-height: 150px;
-  font-size: 1em;
-  font-weight: 200;
-
-  margin: 0;
-
-  border-style: none;
-  outline: none;
-  resize: none;
-
-  background-color: transparent;
-  &::placeholder {
-    color: #8e9297;
-  }
+const Title = styled(Text)`
+  color: ${props => props.theme.gold};
+  font-size: 1.2em;
 `
 
 const PropertyContainer = styled.div`
@@ -61,6 +46,7 @@ const PropertyContainer = styled.div`
   flex-direction: column;
   margin: 5px 0;
   width: ${props => props.full ? '100%' : '50%'};
+  border-bottom: 1px solid grey;
 `
 
 const Property = (props) => {
@@ -68,7 +54,7 @@ const Property = (props) => {
 
   return (
     <PropertyContainer full={full}>
-      <Text color='gold'>{title}</Text>
+      <Title>{title}</Title>
 
       {
         (type && type === 'select') ?
@@ -129,7 +115,7 @@ const EditItem = (props) => {
 
       <Property title='quantity' value={quantity} type='number' callback={(value) => editItem('quantity', Number(value))} />
 
-      <Text color='gold'>Description</Text>
+      <Title>Description</Title>
       <TextArea placeholder='Item description goes here' value={desc} onChange={(event) => editItem('desc', event.target.value)} />
     </Container>
   )

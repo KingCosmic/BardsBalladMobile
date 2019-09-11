@@ -7,6 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 5px 5px;
+  width: 100%;
 `
 
 const Header = styled.div`
@@ -23,13 +24,13 @@ const HeaderText = styled(Text)`
   font-size: 1.4em;
 `
 
-const ListSection = ({ title, Component, filter = () => true, data, headerColor, HeaderExtra = () => null, onClick = () => {} }) => {
+const ListSection = ({ title, Component, filter = () => true, data = [], headerColor, HeaderExtra = () => null, onClick = () => {}, showOnEmpty = false }) => {
   const filterdData = data.filter(filter);
 
-  if (filterdData.length === 0) return null;
+  if (filterdData.length === 0 && showOnEmpty === false) return null;
 
   return (
-    <Container margin='0 5px 5px'>
+    <Container>
       <Header hcolor={headerColor}>
         <HeaderText>{title}</HeaderText>
         <HeaderExtra />
