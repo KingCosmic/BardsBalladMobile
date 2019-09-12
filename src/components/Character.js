@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Link as L } from 'react-router-dom';
 import Text from './Text';
 
 const Container = styled.div`
@@ -20,10 +19,6 @@ const Container = styled.div`
   background-repeat: no-repeat;
 `
 
-const Link = styled(L)`
-  text-decoration: none;
-`
-
 const OptionsButton = styled(Text)`
   position: absolute;
   top: 10px;
@@ -32,15 +27,13 @@ const OptionsButton = styled(Text)`
 `
 
 const Character = (props) => {
-  const { name, job, lvl, id } = props;
+  const { name, job, lvl, id, history } = props;
 
   return (
-    <Container>
+    <Container onClick={() => history.replace(`/characters/${id}`)}>
       <OptionsButton>?</OptionsButton>
 
-      <Link to={`/characters/${id}`}>
-        <Text>{name}</Text><Text>{job}: {lvl}</Text>
-      </Link>
+      <Text>{name}</Text><Text>{job}: {lvl}</Text>
     </Container>
   )
 }

@@ -43,7 +43,6 @@ class Characters extends Component {
   }
 
   render() {
-
     const { characters, createCharacter, creatingCharacter,
       toggleSideNav
     } = this.props;
@@ -66,7 +65,7 @@ class Characters extends Component {
             characters.map(character => {
               const { name, job, lvl } = character
 
-              return <Character key={character._id} name={name} job={job} lvl={lvl} character={character} id={character._id} />
+              return <Character key={character._id} name={name} job={job} lvl={lvl} character={character} id={character._id} history={this.props.history} />
             })
           }
         </Container>
